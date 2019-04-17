@@ -1,50 +1,31 @@
 #include <stdio.h>
 
-long prime_factor(long factor, long number, long count);
-
 /**
- *main - Entry point.
+ *main - print largest prime factor of number
  *
- *Return: 0 for success..
+ *Return: 0 for success, -1 for failure.
  */
 int main(void)
 {
-	long largest = 0;
-
-	largest = prime_factor(612852475142, 612852475143, 612852475141);
-	return ((largest) ? largest : -1);
-}
-
-/**
- *prime_factor - check if factor is prime and number % factor
- *@factor: factors of number checked if prime
- *@number: threshold to stop checking factors
- *
- *Return: largest prime factor of number.
- */
-long prime_factor(long factor, long number, long count)
-{
-	/* find factor that is prime */
-	while (count > 1)
+	long number = 612852475143;
+	long prime;
+	long factor;
+	
+	for (factor = number; factor > 2; factor -= 2)
 	{
-		if (factor % count)
+		if (!(number % factor)) /* for each factor of number */
 		{
-			printf("HERE\n");
-			prime_factor(factor, number, count - 1);
-		}
-		else
-		{
-			prime_factor(factor - 1, number, factor - 2);
+			for (prime = factor; prime > 2; prime -= 2)
+			{
+				if (!(factor % prime))
+					break;
+			}
+			if (factor == 1)
+			{
+				printf("%ld\n", prime);
+				return (0);
+			}
 		}
 	}
-	printf("prime number = %ld\n", factor);
-
-	/* if escape while loop, factor is prime */
-
-	/* check if factor is factor of number */
-	if (!(number % factor))
-		return (factor);
-	else
-		prime_factor(factor - 1, number, factor - 2);
-	return (0);
+	return (-1);
 }
