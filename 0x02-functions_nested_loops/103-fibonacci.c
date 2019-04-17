@@ -3,9 +3,9 @@
 /**
  *main - print sum of even fibinacci numbers < 4million
  *
- *Return: void
+ *Return: 0 for success
  */
-void main(void)
+int main(void)
 {
 	long prev = 1;
 	long curr = 2;
@@ -21,4 +21,5 @@ void main(void)
 		curr = tmp;
 	}
 	printf("%ld\n", sum);
+	return (0);
 }
