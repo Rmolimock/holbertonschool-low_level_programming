@@ -2,11 +2,8 @@
 
 /**
  *main - print sum of even fibinacci numbers < 4million
- *@prev: previous number in sequence
- *@curr: current number in sequence
- *@sum: sum of even numbers in sequence thusfar
  *
- *Return: recursively count up until next number > 4million
+ *Return: void
  */
 void main(void)
 {
