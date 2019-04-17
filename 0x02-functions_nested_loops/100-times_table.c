@@ -10,10 +10,8 @@ void print_times_table(int n)
 {
 	int a;
         int b;
-	char *c;
         int multiple = 0;
 
-	c = "0\n";
         if (n > 15 || n < 0 || !n)
 		return;
 	for (a = 0; a <= n; a++)
