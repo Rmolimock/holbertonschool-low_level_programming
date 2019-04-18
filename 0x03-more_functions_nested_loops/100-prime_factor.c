@@ -7,25 +7,22 @@
  */
 int main(void)
 {
-	long number = 612852475143;
-	long prime;
-	long factor;
+	long prime = 612852475143;
+	long factor = 3;
 	
-	for (factor = number; factor > 2; factor -= 2)
+	while (factor < (prime / 2))
 	{
-		if (!(number % factor)) /* for each factor of number */
+		for (factor = 3; factor < (prime / 2); factor += 2)
 		{
-			for (prime = factor; prime > 2; prime -= 2)
-			{
-				if (!(factor % prime))
-					break;
-			}
-			if (factor == 1)
-			{
-				printf("%ld\n", prime);
-				return (0);
-			}
+			if ((prime % factor) == 0)
+				prime /= factor;
+		}
+		if ((prime % 2) == 0)
+		{
+			prime /= 2;
+			continue;
 		}
 	}
-	return (-1);
+	printf("%ld\n", prime);
+	return (0);
 }
