@@ -9,7 +9,7 @@ int main(void)
 {
 	long prime = 612852475143;
 	long factor = 3;
-	
+
 	while (factor < (prime / 2))
 	{
 		for (factor = 3; factor < (prime / 2); factor += 2)
