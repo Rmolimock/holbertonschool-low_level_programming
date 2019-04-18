@@ -29,7 +29,7 @@ int main(void)
 	printf("NA = an int that was declared without an asterisk, called with two asterisks\n");
 
 	/* int single pointer */
-	printf("\n\n%p = an int that was declared with one asterisk, called with ampersand\n", &int_single_pointer);
+	printf("\n\n%p = an int that was declared a single pointer, called with ampersand\n", &int_single_pointer);
 	printf("%p = an int that was declared a single pointer, called as is\n", int_single_pointer);
 	printf("%d = an int that was declared a single pointer, called with one asterisk\n", *int_single_pointer);
 
