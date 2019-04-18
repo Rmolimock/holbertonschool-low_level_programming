@@ -3,27 +3,23 @@
 /**
  *rev_string - reverses the content of a string
  *@s: pointer to a char array to be reversed
- *
  *Return: void
  */
 void rev_string(char *s)
 {
-	int i = 0;
-	int n;
-	char a;
-	char b;
-
-	while (s[i] != '\0')
+	int tail_posit = 0;
+	int head_posit;
+	char tail;
+	char head;
+	
+	while (s[tail_posit + 1])
+		tail_posit++;
+	for (head_posit = 0; head_posit < tail_posit; head_posit++)
 	{
-		i++;
-		}
-	i -= 1;
-	for (n = 0; n < i; n++)
-	{
-		a = s[i];
-		b = s[n];
-		s[n] = a;
-		s[i] = b;
-		i--;
-		}
+		tail = s[tail_position];
+		head = s[head_position];
+		s[head_position] = tail;
+		s[tail_position] = head;
+		tail_position++;
+	}
 }
