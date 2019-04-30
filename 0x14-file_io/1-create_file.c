@@ -7,7 +7,7 @@
 #include "holberton.h"
 
 /**
- *create_file - creates a file using a system call
+ *create_file - creates a file
  *@filename: name of file to be created
  *@text_content: string to append to the file
  *
@@ -21,7 +21,9 @@ int create_file(const char *filename, char *text_content)
 	int fn;
 	int wr;
 
-	if (!filename || !text_content)
+	if (text_content == NULL)
+		return (-1);
+	if (!filename)
 		return (-1);
 	while (text_content[l])
 		l++;
