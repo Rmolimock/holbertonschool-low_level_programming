@@ -17,29 +17,6 @@ dlistint_t *create_node(dlistint_t *new, int n)
 }
 
 /**
- *insert - insert node after current
- *@current: pointer to node before new
- *@new: new node to insert
- *
- *Return: new node for success, NULL on failure
- */
-dlistint_t *insert(dlistint_t *current, dlistint_t *new)
-{
-	if (current->next)
-	{
-		new->next = current->next;
-		new->prev = current->next->prev;
-		current->next->prev = new;
-		current->next = new;
-		return (new);
-	}
-	new->next = NULL;
-	current->next = new;
-	return (new);
-}
-
-
-/**
  *insert_dnodeint_at_index - insert node at index of linked list
  *@h: double pointer to head of the list
  *@idx: index at which to insert node
@@ -49,40 +26,41 @@ dlistint_t *insert(dlistint_t *current, dlistint_t *new)
  */
 dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 {
-	dlistint_t *current, *new = NULL, *ret;
-	size_t count;
+	dlistint_t *current = NULL, *new = NULL;
 
 	new = create_node(new, n);
-	if (!new)
-		return (NULL);
-	if (!*h)
+	if (!new || !h)
 	{
-		if (idx == 0)
-		{
-			new->next = NULL;
-			*h = new;
-			return (new);
-		}
-		else
-			return (NULL);
+		if (new)
+			free(new);
+		return (NULL);
 	}
 	current = *h;
-	if (idx == 0)
+	if (!idx)
 	{
-		new->next = *h;
+		if (current)
+		{
+			new->next = current;
+			current->prev = new;
+		}
+		else
+			new->next = NULL;
+		new->prev = NULL;
 		*h = new;
 		return (new);
 	}
-	for (count = 0; current->next && count < idx; count++)
+	for (idx--; current; current = current->next, idx--)
 	{
-		if (count == idx - 1)
+		if (!idx)
 		{
-			ret = insert(current, new);
-			return (ret);
+			new->prev = current;
+			new->next = current->next;
+			if (new->next)
+				new->next->prev = new;
+			current->next = new;
+			return (new);
 		}
-		current = current->next;
 	}
-	current->next = new;
-	new->next = NULL;
+	free(new);
 	return (NULL);
 }
