@@ -3,11 +3,11 @@
 #include "lists.h"
 
 /**
+ *delete_dnodeint_at_index - delete node at given index
+ *@head: head of doubly linked list
+ *@index: index at which to delete
  *
- *
- *
- *
- *
+ *Return: 1 for success, -1 for failure
  */
 int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 {
