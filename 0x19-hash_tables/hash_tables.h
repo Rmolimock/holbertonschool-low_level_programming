@@ -33,7 +33,7 @@ hash_table_t *hash_table_create(unsigned long int size);
 unsigned long int hash_djb2(const unsigned char *str);
 unsigned long int key_index(const unsigned char *key, unsigned long int size);
 int hash_table_set(hash_table_t *ht, const char *key, const char *value);
-int check_collisions(hash_table_t *ht, const char *key, const char *value,
+int handle_collisions(hash_table_t *ht, const char *key, const char *value,
 unsigned long int index);
 char *hash_table_get(const hash_table_t *ht, const char *key);
 char *search_node(const char *key, const hash_node_t *node);
