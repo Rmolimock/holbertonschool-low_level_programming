@@ -30,4 +30,15 @@ typedef struct hash_table_s
 	hash_node_t **array;
 } hash_table_t;
 hash_table_t *hash_table_create(unsigned long int size);
+unsigned long int hash_djb2(const unsigned char *str);
+unsigned long int key_index(const unsigned char *key, unsigned long int size);
+int hash_table_set(hash_table_t *ht, const char *key, const char *value);
+int check_collisions(hash_table_t *ht, const char *key, const char *value,
+unsigned long int index);
+char *hash_table_get(const hash_table_t *ht, const char *key);
+char *search_node(const char *key, const hash_node_t *node);
+void hash_table_print(const hash_table_t *ht);
+void print_table(const hash_table_t *ht);
+void hash_table_delete(hash_table_t *ht);
+void delete_table(const hash_table_t *ht);
 #endif
