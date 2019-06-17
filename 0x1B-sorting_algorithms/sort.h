@@ -1,3 +1,5 @@
+#ifndef __SORT__
+#define __SORT__
 /**
  * struct listint_s - Doubly linked list node
  *
@@ -7,12 +9,14 @@
  */
 typedef struct listint_s
 {
-    const int n;
-    struct listint_s *prev;
-    struct listint_s *next;
+	const int n;
+	struct listint_s *prev;
+	struct listint_s *next;
 } listint_t;
 void print_list(const listint_t *list);
 void print_array(const int *array, size_t size);
 void bubble_sort(int *array, size_t size);
 void insertion_sort_list(listint_t **list);
-void _swap(listint_t *bigger, listint_t *smaller, listint_t **head);
+void swap(listint_t *bigger, listint_t *smaller, listint_t **head);
+
+#endif
