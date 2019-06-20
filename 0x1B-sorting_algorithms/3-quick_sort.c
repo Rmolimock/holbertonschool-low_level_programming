@@ -4,8 +4,8 @@
 /**
  *quick_recursion - recursively implement quick sort on an array
  *@array: array to be sorted
- *@less: the end position of elements less than pivot
- *@greater: the position compared to pivot
+ *@first: the end position of elements less than pivot
+ *@last: the position compared to pivot
  *@size: size of the array
  *
  *Return: Void.
@@ -62,7 +62,7 @@ int partition(int *array, int first, int last, size_t size)
  */
 void quick_sort(int *array, size_t size)
 {
-        if (!array)
-                return;
-        quick_recursion(array, 0, size - 1, size);
+	if (!array)
+		return;
+	quick_recursion(array, 0, size - 1, size);
 }
