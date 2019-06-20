@@ -19,4 +19,7 @@ void bubble_sort(int *array, size_t size);
 void insertion_sort_list(listint_t **list);
 void swap(listint_t *bigger, listint_t *smaller, listint_t **head);
 void selection_sort(int *array, size_t size);
+void quick_sort(int *array, size_t size);
+void quick_recursion(int *array, int first, int last, size_t size);
+int partition(int *array, int first, int last, size_t size);
 #endif
