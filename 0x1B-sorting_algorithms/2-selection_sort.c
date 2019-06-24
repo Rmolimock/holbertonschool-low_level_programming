@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <stdio.h>
 #include "sort.h"
 
 /**
@@ -11,27 +12,29 @@
 void selection_sort(int *array, size_t size)
 {
 	size_t y, x, flag;
-	int smallest, new_smallest = 0;
+	int smallest, idx_smallest = 0, tmp;
 
 	if (!array || size == 1)
 		return;
-	for (y = 0; y < size; y++)
+	for (y = 0; array[y]; y++)
 	{
 		smallest = array[y];
 		flag = 0;
 		for (x = y; array[x]; x++)
 		{
-			if (array[x] <= smallest)
+			if (array[x] < smallest)
 			{
-				if (array[x] < smallest)
-					flag = 1;
 				smallest = array[x];
-				new_smallest = x;
+				flag = 1;
+				idx_smallest = x;
 			}
 		}
-		array[new_smallest] = array[x];
-		array[x] = smallest;
 		if (flag)
+		{
+			tmp = array[idx_smallest];
+			array[idx_smallest] = array[y];
+			array[y] = tmp;
 			print_array(array, size);
+		}
 	}
 }
